@@ -1,20 +1,25 @@
-import { LoginData, RegisterData } from "../../../types/authTypes";
+import { IAuthResponse } from "../../../types/authTypes";
 import { baseApi } from "../../app/baseApi";
+import { onQueryStartedCommon } from "../../utils/rtk-utils";
+
 export const authApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
-    userRegister: builder.mutation<RegisterData, void>({
+    userRegister: builder.mutation<IAuthResponse, unknown>({
       query: (registerData) => ({
         url: `/register`,
         method: "POST",
-        data: registerData,
+        body: registerData,
       }),
+      onQueryStarted: onQueryStartedCommon,
     }),
-    userLogin: builder.mutation<LoginData, void>({
+
+    userLogin: builder.mutation<IAuthResponse, unknown>({
       query: (loginData) => ({
         url: `login`,
         method: "POST",
-        data: loginData,
+        body: loginData,
       }),
+      onQueryStarted: onQueryStartedCommon,
     }),
   }),
 });

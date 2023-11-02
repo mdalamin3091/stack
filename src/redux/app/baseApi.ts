@@ -3,7 +3,7 @@ import { BASE_URL } from "../../constants";
 
 export const baseApi = createApi({
   baseQuery: fetchBaseQuery({
-    baseUrl: BASE_URL,
+    baseUrl: "https://reqres.in/api",
   }),
   tagTypes: [],
   endpoints: () => ({}),

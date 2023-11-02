@@ -1,4 +1,5 @@
 export interface RegisterData {
+  name?: string;
   email: string;
   password: string;
 }
@@ -8,7 +9,8 @@ export interface LoginData {
   password: string;
 }
 
-export interface AuthState {
-  user: object | null;
-  token: string | null;
+export interface IAuthResponse {
+  id: number | null;
+  user?: object | null;
+  token: string;
 }
