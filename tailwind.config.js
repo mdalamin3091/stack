@@ -12,6 +12,7 @@ export default {
           200: "#8A94A6",
           300: "#323B4B",
         },
+        error: "#FF5630",
       },
       height: {
         "screen-85": "85vh",

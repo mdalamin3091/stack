@@ -1,3 +1,5 @@
+import { ReactElement, ReactNode } from "react";
+
 export interface RegisterData {
   name?: string;
   email: string;
@@ -20,4 +22,17 @@ export interface IAuthError {
   error?: {
     data?: unknown;
   };
+}
+
+export interface IInput {
+  name: string;
+  type?: string;
+  value?: string | string[] | undefined;
+  id?: string;
+  placeholder?: string;
+  disabled?: boolean;
+  validation?: object;
+  label?: string;
+  required?: boolean;
+  icon?: ReactNode | ReactElement;
 }

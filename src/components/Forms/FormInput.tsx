@@ -1,22 +1,10 @@
-import { ReactElement, ReactNode, useState } from "react";
+import { useState } from "react";
 import { useFormContext, Controller } from "react-hook-form";
 import Lock from "../../assets/icons/Lock";
 import EyeOpen from "../../assets/icons/EyeOpen";
 import EyeClose from "../../assets/icons/EyeClose";
-
-interface IInput {
-  name: string;
-  type?: string;
-  size?: "large" | "small";
-  value?: string | string[] | undefined;
-  id?: string;
-  placeholder?: string;
-  disabled?: boolean;
-  validation?: object;
-  label?: string;
-  required?: boolean;
-  icon?: ReactNode | ReactElement;
-}
+import { IInput } from "../../types/authTypes";
+import { getErrorMessageByPropertyName } from "../../utils/schema-validator";
 
 const FormInput = ({
   name,
@@ -25,14 +13,15 @@ const FormInput = ({
   disabled,
   placeholder,
   id,
-  validation,
   icon,
   label,
 }: IInput) => {
-  const { control } = useFormContext();
+  const {
+    control,
+    formState: { errors },
+  } = useFormContext();
   const [isPassword, setIsPassword] = useState(true);
-  //   const errorMessage = getErrorMessageByPropertyName(errors, name);
-
+  const errorMessage = getErrorMessageByPropertyName(errors, name);
   return (
     <>
       <Controller
@@ -40,7 +29,11 @@ const FormInput = ({
         name={name}
         render={({ field }) =>
           type === "password" ? (
-            <div className="mb-4 border border-secondary-50 rounded-2xl h-14 flex items-center justify-start px-2">
+            <div
+              className={`border rounded-2xl h-14 flex items-center justify-start px-2 ${
+                errorMessage ? "border-error shadow" : "border-secondary-50"
+              }`}
+            >
               <Lock />
               <input
                 className="w-full p-2 outline-none focus:outline-none text-secondary-100"
@@ -82,7 +75,11 @@ const FormInput = ({
               </label>
             </div>
           ) : (
-            <div className="mb-4 border border-secondary-50 rounded-2xl h-14 flex items-center justify-start px-2">
+            <div
+              className={`border rounded-2xl h-14 flex items-center justify-start px-2 focus:border-secondary-100 ${
+                errorMessage ? "border-error shadow" : "border-secondary-50 "
+              }`}
+            >
               {icon}
               <input
                 type={type}
@@ -96,7 +93,9 @@ const FormInput = ({
           )
         }
       />
-      {/* <small style={{ color: "red" }}>{errorMessage}</small> */}
+      <small className="text-left text-error mb-4 mt-2 block text-sm font-semibold">
+        {errorMessage}
+      </small>
     </>
   );
 };

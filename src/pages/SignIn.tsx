@@ -10,6 +10,9 @@ import Gmail from "../assets/icons/Gmail";
 import Header from "../components/ui/Header";
 import { SubmitHandler } from "react-hook-form";
 import Form from "../components/Forms/Form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { signInSchema } from "../schemas/authSchema";
+import toast from "react-hot-toast";
 
 type FormValues = {
   email: string;
@@ -51,10 +54,16 @@ const SignIn = () => {
             Welcome back, you’ve been missed!
           </p>
           <div className="flex items-center justify-center gap-3 flex-col md:flex-row md:gap-7">
-            <button className="flex items-center justify-center gap-3 h-14 bg-secondary hover:bg-secondary-50 duration-100 rounded-2xl text-secondary-200 font-semibold w-full">
+            <button
+              className="flex items-center justify-center gap-3 h-14 bg-secondary hover:bg-secondary-50 duration-100 rounded-2xl text-secondary-200 font-semibold w-full"
+              onClick={() => toast.error("Google sign in is not available!!")}
+            >
               <Google /> Sign In with Google
             </button>
-            <button className="flex items-center justify-center gap-3 h-14 bg-secondary hover:bg-secondary-50  duration-100 rounded-2xl text-secondary-200 font-semibold w-full">
+            <button
+              className="flex items-center justify-center gap-3 h-14 bg-secondary hover:bg-secondary-50  duration-100 rounded-2xl text-secondary-200 font-semibold w-full"
+              onClick={() => toast.error("Apple signup is not available!!")}
+            >
               <Apple /> Sign In with Apple ID
             </button>
           </div>
@@ -65,10 +74,10 @@ const SignIn = () => {
             </p>
             <div className="h-[2px] bg-secondary w-full"></div>
           </div>
-          <Form submitHandler={onSubmit}>
+          <Form submitHandler={onSubmit} resolver={yupResolver(signInSchema)}>
             <FormInput
               icon={<Gmail />}
-              type="email"
+              type="text"
               placeholder="Your Email"
               name="email"
               disabled={isLoading}
