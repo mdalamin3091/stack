@@ -36,3 +36,9 @@ export interface IInput {
   required?: boolean;
   icon?: ReactNode | ReactElement;
 }
+
+export interface IdashboardSidebarItems {
+  icon: ReactNode | ReactElement;
+  title: string;
+  link: string;
+}
