@@ -11,7 +11,6 @@ const PublicRouteGuard: FC<Props> = ({ children }) => {
   if (!token) {
     return children;
   } else {
-    // Redirect to the login page or any other appropriate page for unauthenticated users
     return <Navigate to="/users" />;
   }
 };

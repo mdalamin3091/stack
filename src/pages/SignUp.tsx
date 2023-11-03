@@ -1,12 +1,12 @@
 import { useUserRegisterMutation } from "../redux/features/auth/authApi";
-import { RegisterData } from "@/types/authTypes";
-import toast from "react-hot-toast";
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import useToastAndApiHandler from "../hooks/useToastAndApiHandler";
+import { IAuthError, IAuthResponse, RegisterData } from "../types/authTypes";
 
 const Signup = () => {
   const [formData, setFormData] = useState<RegisterData>({
-    email: "",
-    password: "",
+    email: "eve.holt@reqres.in",
+    password: "pistol",
   });
   const [userRegister, { data, isSuccess, isError, error, isLoading }] =
     useUserRegisterMutation();
@@ -22,13 +22,17 @@ const Signup = () => {
     userRegister(formData);
   };
 
-  useEffect(() => {
-    if (isSuccess && data) {
-      toast.success("Registration successfully completed.");
-    } else if (isError && error) {
-      toast.error(error?.data?.error);
-    }
-  }, [isSuccess, isError, data, error]);
+  const successMessage = "Registration successfully completed.";
+  useToastAndApiHandler<IAuthResponse, IAuthError>(
+    {
+      isSuccess,
+      isError,
+      isLoading,
+      data,
+      error,
+    },
+    successMessage
+  );
 
   return (
     <div className="min-h-screen flex items-center justify-center">
@@ -48,7 +52,7 @@ const Signup = () => {
               name="username"
               disabled={isLoading}
               id="username"
-              value={formData.username}
+              value={formData?.username || ""}
               onChange={handleInputChange}
             />
           </div>

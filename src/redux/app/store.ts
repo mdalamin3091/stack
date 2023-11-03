@@ -5,7 +5,7 @@ import { configureStore } from "@reduxjs/toolkit";
 export const store = configureStore({
   reducer,
   middleware: (gDM) => gDM().concat(baseApi.middleware),
-  devTools: import.meta.env.ENV !== "production",
+  devTools: import.meta.env.MODE !== "production",
 });
 
 export type RootState = ReturnType<typeof store.getState>;

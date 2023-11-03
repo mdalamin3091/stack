@@ -14,3 +14,10 @@ export interface IAuthResponse {
   user?: object | null;
   token: string;
 }
+
+export interface IAuthError {
+  status: number;
+  error?: {
+    data?: unknown;
+  };
+}

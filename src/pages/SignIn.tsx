@@ -1,10 +1,11 @@
-import { useState, useEffect } from "react";
-import toast from "react-hot-toast";
+import { useState } from "react";
 import { useUserLoginMutation } from "../redux/features/auth/authApi";
+import useToastAndApiHandler from "../hooks/useToastAndApiHandler";
+import { IAuthError, IAuthResponse } from "../types/authTypes";
 
 const SignIn = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("eve.holt@reqres.in");
+  const [password, setPassword] = useState("cityslicka");
   const [userLogin, { isSuccess, isError, isLoading, data, error }] =
     useUserLoginMutation();
 
@@ -14,14 +15,17 @@ const SignIn = () => {
       password,
     });
   };
-
-  useEffect(() => {
-    if (isSuccess && data) {
-      toast.success("Signin successfully completed.");
-    } else if (isError && error) {
-      toast.error(error?.data?.error);
-    }
-  }, [isSuccess, isError, data, error]);
+  const successMessage = "Signin successfully completed";
+  useToastAndApiHandler<IAuthResponse, IAuthError>(
+    {
+      isSuccess,
+      isError,
+      isLoading,
+      data,
+      error,
+    },
+    successMessage
+  );
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">

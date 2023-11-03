@@ -1,9 +1,8 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { BASE_URL } from "../../constants";
-
 export const baseApi = createApi({
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://reqres.in/api",
+    baseUrl: BASE_URL,
   }),
   tagTypes: [],
   endpoints: () => ({}),
