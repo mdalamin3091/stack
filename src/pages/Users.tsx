@@ -4,7 +4,7 @@ import { useUsersQuery } from "../redux/features/users/usersApi";
 const UserList = () => {
   const [skip, setSkip] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
-  const { data, isSuccess, isError, isLoading, error } = useUsersQuery({
+  const { data, isSuccess } = useUsersQuery({
     skip,
     page: currentPage,
   });
