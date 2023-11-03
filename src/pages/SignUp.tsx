@@ -1,31 +1,31 @@
 import { useUserRegisterMutation } from "../redux/features/auth/authApi";
-import { Fragment, useState } from "react";
+import { Fragment } from "react";
 import useToastAndApiHandler from "../hooks/useToastAndApiHandler";
-import { IAuthError, IAuthResponse, RegisterData } from "../types/authTypes";
+import { IAuthError, IAuthResponse } from "../types/authTypes";
 import Header from "../components/ui/Header";
 import Gmail from "../assets/icons/Gmail";
 import Google from "../assets/icons/Google";
 import Apple from "../assets/icons/Apple";
+import Person from "../assets/icons/Person";
+import { Link } from "react-router-dom";
+import FormInput from "../components/Forms/FormInput";
+import Form from "../components/Forms/Form";
+import { SubmitHandler } from "react-hook-form";
+
+type FormValues = {
+  email: string;
+  password: string;
+};
 
 const Signup = () => {
-  const [formData, setFormData] = useState<RegisterData>({
-    email: "eve.holt@reqres.in",
-    password: "pistol",
-  });
   const [userRegister, { data, isSuccess, isError, error, isLoading }] =
     useUserRegisterMutation();
-  const handleInputChange = (e: {
-    target: { name: string; value: string };
-  }) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+  const onSubmit: SubmitHandler<FormValues> = async (data: FormValues) => {
+    userRegister({
+      email: data.email,
+      password: data.password,
+    });
   };
-
-  const handleSubmit = (e: { preventDefault: () => void }) => {
-    e.preventDefault();
-    userRegister(formData);
-  };
-
   const successMessage = "Registration successfully completed.";
   useToastAndApiHandler<IAuthResponse, IAuthError>(
     {
@@ -50,10 +50,10 @@ const Signup = () => {
             Create an account to continue!
           </p>
           <div className="flex items-center justify-center gap-3 flex-col md:flex-row md:gap-7">
-            <button className="flex items-center justify-center gap-3 h-14 bg-secondary rounded-2xl text-secondary-200 font-semibold w-full">
+            <button className="flex items-center justify-center gap-3 h-14 bg-secondary hover:bg-secondary-50 duration-100 rounded-2xl text-secondary-200 font-semibold w-full">
               <Google /> Sign Up with Google
             </button>
-            <button className="flex items-center justify-center gap-3 h-14 bg-secondary rounded-2xl text-secondary-200 font-semibold w-full">
+            <button className="flex items-center justify-center gap-3 h-14 bg-secondary hover:bg-secondary-50 duration-100 rounded-2xl text-secondary-200 font-semibold w-full">
               <Apple /> Sign Up with Apple ID
             </button>
           </div>
@@ -64,50 +64,56 @@ const Signup = () => {
             </p>
             <div className="h-[2px] bg-secondary w-full"></div>
           </div>
-          <form onSubmit={handleSubmit}>
-            <div className="mb-4 border border-secondary-50 rounded-2xl h-14 flex items-center justify-start px-2">
-              <Gmail />
-              <input
-                className="w-full p-2 outline-none focus:outline-none text-secondary-100"
-                type="text"
-                placeholder="Your Name"
-                name="username"
-                disabled={isLoading}
-                id="username"
-                value={formData?.username || ""}
-                onChange={handleInputChange}
-              />
+          <Form submitHandler={onSubmit}>
+            <FormInput
+              icon={<Gmail />}
+              type="email"
+              placeholder="Your Email"
+              name="email"
+              disabled={isLoading}
+            />
+            <FormInput
+              icon={<Person />}
+              type="text"
+              placeholder="Your Name"
+              name="name"
+              disabled={isLoading}
+            />
+
+            <FormInput
+              type="password"
+              placeholder="Create Password"
+              name="password"
+              disabled={isLoading}
+            />
+            <div className="flex items-center justify-between gap-3 mb-7">
+              <div className="bg-[#38CB89] rounded-lg h-1 w-full"></div>
+              <div className="bg-secondary-100 rounded-lg h-1 w-full"></div>
+              <div className="bg-secondary-200 rounded-lg h-1 w-full"></div>
+              <div className="bg-secondary-200 rounded-lg h-1 w-full"></div>
+              <div className="bg-secondary-200 rounded-lg h-1 w-full"></div>
+              <div className="bg-secondary-200 rounded-lg h-1 w-full"></div>
             </div>
-            <div className="mb-4">
-              <input
-                className="w-full border border-gray-300 p-2 rounded"
-                type="email"
-                name="email"
-                disabled={isLoading}
-                id="email"
-                value={formData.email}
-                onChange={handleInputChange}
-              />
-            </div>
-            <div className="mb-4">
-              <input
-                className="w-full border border-gray-300 p-2 rounded"
-                type="password"
-                name="password"
-                disabled={isLoading}
-                id="password"
-                value={formData.password}
-                onChange={handleInputChange}
-              />
-            </div>
+            <FormInput
+              type="checkbox"
+              label="I agree to the Terms & Conditions"
+              name="termsAndCondition"
+              id="termsAndCondition"
+            />
             <button
-              className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 disabled:bg-blue-300"
+              className="bg-primary text-white px-4 rounded-2xl hover:bg-blue-600 disabled:bg-blue-300 w-full h-14 mb-5"
               type="submit"
               disabled={isLoading}
             >
               Sign Up
             </button>
-          </form>
+            <p className="text-base text-secondary-200 ">
+              Already have an account?{" "}
+              <Link to="/signin" className="text-primary">
+                Sign In
+              </Link>
+            </p>
+          </Form>
         </div>
       </main>
     </Fragment>
