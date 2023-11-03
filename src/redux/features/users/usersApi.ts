@@ -4,9 +4,9 @@ import { baseApi } from "../../app/baseApi";
 export const authApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     users: builder.query<Record<string, any>, any>({
-      query: () => {
+      query: ({ skip, page }) => {
         return {
-          url: "/users",
+          url: `/users?page=${page}`,
           method: "GET",
         };
       },
