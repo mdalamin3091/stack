@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import DownArrow from "../../assets/icons/DownArrow";
 import Logo from "../../assets/icons/logo";
 
@@ -5,7 +6,9 @@ const Header = () => {
   return (
     <header className="header py-4">
       <nav className="container flex items-center justify-between">
-        <Logo />
+        <Link to="/">
+          <Logo />
+        </Link>
         <div className="relative inline-flex">
           <div className="top-5 right-4 absolute">
             <DownArrow />

@@ -29,11 +29,13 @@ const DashboardSidebar = () => {
   return (
     <div className="col-span-2 md:col-span-1 border-r border-secondary-50 px-3 py-2">
       <span className="hidden md:block">
-        <Logo />
+        <Link to="/users">
+          <Logo />
+        </Link>
       </span>
-      <span className="block md:hidden">
+      <Link to="/users" className="block md:hidden">
         <MobileLogo />
-      </span>
+      </Link>
       <div className="flex flex-col gap-3">
         <h2 className="uppercase text-secondary-100 mt-4 text-sm md:text-lg">
           Pages
