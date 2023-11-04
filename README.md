@@ -1,7 +1,7 @@
 # Starting with Stack
 
-[Bookshop](https://stack-block.netlify.app/)
-(https://i.ibb.co/G0nMFWh/Stack.png)
+[Stack](https://stack-block.netlify.app/)
+[Stack](https://i.ibb.co/G0nMFWh/Stack.png)
 
 ### Overview
 
