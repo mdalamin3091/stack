@@ -16,10 +16,10 @@ const DashboardNavbar = () => {
   return (
     <nav className="flex items-center justify-between gap-2 lg:gap-4">
       <div
-        className={`bg-secondary rounded-xl h-14 flex items-center justify-start px-3 basis-1/2`}
+        className={`bg-secondary rounded-xl h-12 md:h-14 flex items-center justify-start px-2 md:px-3 basis-1/2`}
       >
         <input
-          className="w-full p-2 outline-none focus:outline-none text-secondary-100 bg-secondary"
+          className="w-full p-1 md:p-2 outline-none focus:outline-none text-secondary-100 bg-secondary"
           type="text"
           name="search"
           placeholder="Search"
