@@ -42,7 +42,7 @@ const Signup = () => {
   return (
     <Fragment>
       <Header />
-      <main className="min-h-[90vh] flex items-center justify-center container mt-4 md:mt-0 mb-4 md:mb-0">
+      <main className="min-h-[88vh] flex items-center justify-center container mt-4 md:mt-0 mb-4 md:mb-0">
         <div className="max-w-[540px] w-full text-center">
           <SignupHeader />
           <Form submitHandler={onSubmit} resolver={yupResolver(signupSchema)}>
