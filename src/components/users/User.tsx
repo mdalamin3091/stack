@@ -15,14 +15,19 @@ const User: FC<PropsType> = ({ user }) => {
       >
         {user.id}
       </th>
-      <td className="px-6 py-4">
+      <td className="px-6 py-4 flex items-center justify-start gap-3">
         <img
           src={user.avatar}
           alt={user.first_name}
           className="w-12 h-12 rounded-2xl"
         />
+        <p className="text-secondary-400 font-semibold">
+          {user.first_name} {user.last_name}
+        </p>
       </td>
-      <td className="px-6 py-4">{user.email}</td>
+      <td className="px-6 py-4 text-secondary-400 font-semibold">
+        {user.email}
+      </td>
       <td className="px-6 py-4 cursor-pointer">
         <ThreeDot />
       </td>
