@@ -1,7 +1,7 @@
 # Starting with Stack
 
 [Stack](https://stack-block.netlify.app/)
-[Stack](https://i.ibb.co/G0nMFWh/Stack.png)
+![Stack](https://i.ibb.co/G0nMFWh/Stack.png)
 
 ### Overview
 
