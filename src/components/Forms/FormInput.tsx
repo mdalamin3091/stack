@@ -22,7 +22,7 @@ const FormInput = ({
     control,
     formState: { errors },
   } = useFormContext();
-  const [isPassword, setIsPassword] = useState(true);
+  const [isPassword, setIsPassword] = useState(false);
   const [passwordValue, setPasswordValue] = useState("");
   const errorMessage = getErrorMessageByPropertyName(errors, name);
   return (

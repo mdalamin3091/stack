@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, Fragment } from "react";
 const requirements = [
   { re: /[0-9]/, label: "Includes number" },
   { re: /[a-z]/, label: "Includes lowercase letter" },
@@ -29,20 +29,39 @@ const PasswordRequirement: FC<PropsType> = ({ passwordValue }) => {
   const strength = getStrength();
   const color =
     strength === 100
-      ? "bg-green-600"
+      ? "bg-green-400 text-green-400"
       : strength > 50
-      ? "bg-yellow-600"
+      ? "bg-yellow-400 text-yellow-400"
       : strength > 10
-      ? "bg-red-600"
+      ? "bg-red-400"
       : "bg-secondary-50";
-  //   console.log("strength", strength);
   return (
-    <div className="flex items-center justify-between gap-3 mb-7 mt-4">
-      {requirements.map((_, index) => (
-        // <div key={index} className={`${color} rounded-lg h-1 w-full`} />
-        <div key={index} className={`${color} rounded-lg h-1 w-full`} />
-      ))}
-    </div>
+    <Fragment>
+      <div className="flex items-center justify-between gap-3 mb-1 mt-4 ">
+        {requirements.map((_, index) => (
+          <div key={index} className={`${color} rounded-lg h-1 w-full`} />
+        ))}
+      </div>
+      <p
+        className={` text-sm text-left mb-6 ${
+          strength === 100
+            ? " text-green-400"
+            : strength > 50
+            ? " text-yellow-400"
+            : strength > 10
+            ? "text-red-400"
+            : ""
+        }`}
+      >
+        {strength === 100
+          ? "Strong Password"
+          : strength > 50
+          ? "Good Password"
+          : strength > 10
+          ? "Weak Password"
+          : null}
+      </p>
+    </Fragment>
   );
 };
 
