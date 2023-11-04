@@ -1,3 +1,4 @@
+import NotAvailablePage from "../components/ui/NotAvailablePage";
 import DashboardLayout from "../layout/DashboardLayout";
 
 const Dashboard = () => {
@@ -7,6 +8,7 @@ const Dashboard = () => {
         <h2 className="text-2xl font-semibold mb-4 text-secondary-300">
           Dashboard
         </h2>
+        <NotAvailablePage title="Dashboard" />
       </div>
     </DashboardLayout>
   );

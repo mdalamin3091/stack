@@ -26,7 +26,7 @@ export const items: IdashboardSidebarItems[] = [
 const DashboardSidebar = () => {
   const location = useLocation();
   return (
-    <div className="col-span-1 border-r border-secondary-50 px-3 py-2 w-full">
+    <div className="col-span-1 border-r border-secondary-50 px-3 py-2">
       <Logo />
       <div className="flex flex-col gap-3">
         <h2 className="uppercase text-secondary-100 mt-4">Pages</h2>
