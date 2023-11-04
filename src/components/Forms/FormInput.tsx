@@ -3,7 +3,7 @@ import { useFormContext, Controller } from "react-hook-form";
 import Lock from "../../assets/icons/Lock";
 import EyeOpen from "../../assets/icons/EyeOpen";
 import EyeClose from "../../assets/icons/EyeClose";
-import { IInput } from "../../types/authTypes";
+import { IInput } from "../../types";
 import { getErrorMessageByPropertyName } from "../../utils/schema-validator";
 
 const FormInput = ({

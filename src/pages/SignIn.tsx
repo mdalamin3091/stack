@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import { useUserLoginMutation } from "../redux/features/auth/authApi";
 import useToastAndApiHandler from "../hooks/useToastAndApiHandler";
-import { IAuthError, IAuthResponse } from "../types/authTypes";
+import { IAuthError, IAuthResponse } from "../types";
 import Google from "../assets/icons/Google";
 import Apple from "../assets/icons/Apple";
 import { Link } from "react-router-dom";

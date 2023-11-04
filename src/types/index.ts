@@ -42,3 +42,10 @@ export interface IdashboardSidebarItems {
   title: string;
   link: string;
 }
+
+export interface IUserResponse {
+  id: number;
+  email: string;
+  first_name: string;
+  avatar: string;
+}

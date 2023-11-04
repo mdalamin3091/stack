@@ -1,7 +1,7 @@
 import { useUserRegisterMutation } from "../redux/features/auth/authApi";
 import { Fragment } from "react";
 import useToastAndApiHandler from "../hooks/useToastAndApiHandler";
-import { IAuthError, IAuthResponse } from "../types/authTypes";
+import { IAuthError, IAuthResponse } from "../types";
 import Header from "../components/ui/Header";
 import Gmail from "../assets/icons/Gmail";
 import Google from "../assets/icons/Google";

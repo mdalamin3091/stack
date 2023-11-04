@@ -1,4 +1,4 @@
-import { IAuthResponse } from "../../../types/authTypes";
+import { IAuthResponse } from "../../../types";
 import { baseApi } from "../../app/baseApi";
 import { onQueryStartedCommon } from "../../utils/rtk-utils";
 

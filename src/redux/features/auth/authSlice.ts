@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IAuthResponse } from "../../../types/authTypes";
+import { IAuthResponse } from "../../../types";
 
 const token = localStorage.getItem("token");
 

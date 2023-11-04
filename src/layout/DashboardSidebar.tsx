@@ -3,7 +3,7 @@ import DashboardIcon from "../assets/icons/DashboardIcon";
 import Sales from "../assets/icons/Sales";
 import UserIcon from "../assets/icons/UserIcon";
 import Logo from "../assets/icons/logo";
-import { IdashboardSidebarItems } from "../types/authTypes";
+import { IdashboardSidebarItems } from "../types";
 
 export const items: IdashboardSidebarItems[] = [
   {
