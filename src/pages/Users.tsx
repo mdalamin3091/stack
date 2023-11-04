@@ -3,6 +3,8 @@ import { useUsersQuery } from "../redux/features/users/usersApi";
 import DashboardLayout from "../layout/DashboardLayout";
 import User from "../components/users/User";
 import { IUserResponse } from "../types";
+import LeftArrow from "../assets/icons/LeftArrow";
+import RightArrow from "../assets/icons/RightArrow";
 
 const UserList = () => {
   const [skip, setSkip] = useState(0);
@@ -51,19 +53,33 @@ const UserList = () => {
         {isSuccess && data.total_pages > 1 && (
           <div className="mt-4">
             <ul className="flex space-x-2">
+              <button
+                className="pagination-btn"
+                onClick={() => handlePageChange(currentPage - 1)}
+                disabled={currentPage === 1}
+              >
+                <LeftArrow />
+              </button>
               {Array.from({ length: data.total_pages }, (_, i) => (
                 <li
                   key={i}
                   onClick={() => handlePageChange(i + 1)}
-                  className={`px-3 py-1 rounded-full cursor-pointer ${
+                  className={`text-base px-3 py-1 rounded-xl cursor-pointer ${
                     i + 1 === currentPage
-                      ? "bg-primary text-white"
-                      : "bg-gray-300 text-gray-700"
+                      ? "bg-primary text-white border border-transparent"
+                      : "bg-white text-[#333333] border border-secondary-100"
                   }`}
                 >
                   {i + 1}
                 </li>
               ))}
+              <button
+                className="pagination-btn"
+                onClick={() => handlePageChange(currentPage + 1)}
+                disabled={currentPage === data.total_pages}
+              >
+                <RightArrow />
+              </button>
             </ul>
           </div>
         )}
