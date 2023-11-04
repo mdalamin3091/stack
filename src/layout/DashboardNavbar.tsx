@@ -14,7 +14,7 @@ const DashboardNavbar = () => {
   };
 
   return (
-    <nav className="flex items-center justify-between gap-4">
+    <nav className="flex items-center justify-between gap-2 lg:gap-4">
       <div
         className={`bg-secondary rounded-xl h-14 flex items-center justify-start px-3 basis-1/2`}
       >
@@ -26,7 +26,7 @@ const DashboardNavbar = () => {
         />
         <SearchIcon />
       </div>
-      <div className="flex items-center justify-end gap-10">
+      <div className="flex items-center justify-end gap-4 md:gap-6 lg:gap-10">
         <span className="cursor-pointer">
           <Notification />
         </span>

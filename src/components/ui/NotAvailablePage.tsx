@@ -7,8 +7,8 @@ interface PropsType {
 
 const NotAvailablePage: FC<PropsType> = ({ title }) => {
   return (
-    <div className="bg-white p-8 rounded-lg shadow-lg">
-      <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+    <div className="bg-white p-4 md:p-8 rounded-lg shadow-lg">
+      <h2 className="text-xl md:text-2xl font-semibold text-gray-800 mb-4">
         {title} Page Not Available
       </h2>
       <p className="text-gray-600 mb-4">

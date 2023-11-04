@@ -7,7 +7,7 @@ const Sales = () => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clip-path="url(#clip0_20_240)">
+      <g clipPath="url(#clip0_20_240)">
         <path
           d="M13.0588 17.1499H2.70587V18.4746H13.0588V17.1499Z"
           fill="#B0B7C3"
