@@ -43,7 +43,7 @@ const SignIn = () => {
   return (
     <Fragment>
       <Header />
-      <main className="min-h-screen flex items-center justify-center container">
+      <main className="min-h-[88vh] flex items-center justify-center container">
         <div className="max-w-[540px] w-full text-center">
           <SignInHeader />
           <Form submitHandler={onSubmit} resolver={yupResolver(signInSchema)}>
