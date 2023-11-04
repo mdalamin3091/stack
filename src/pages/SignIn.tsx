@@ -57,7 +57,7 @@ const SignIn = () => {
 
             <FormInput
               type="password"
-              placeholder="Create Password"
+              placeholder="Password"
               name="password"
               disabled={isLoading}
             />
@@ -67,11 +67,7 @@ const SignIn = () => {
               name="rememberMe"
               id="rememberMe"
             />
-            <button
-              className="bg-primary text-white px-4 rounded-2xl hover:bg-blue-600 disabled:bg-blue-300 w-full h-14 mb-5"
-              type="submit"
-              disabled={isLoading}
-            >
+            <button className="btn-primary" type="submit" disabled={isLoading}>
               Sign In
             </button>
             <p className="text-base text-secondary-200 ">

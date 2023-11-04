@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import { useFormContext, Controller } from "react-hook-form";
 import Lock from "../../assets/icons/Lock";
 import EyeOpen from "../../assets/icons/EyeOpen";
 import EyeClose from "../../assets/icons/EyeClose";
 import { IInput } from "../../types";
 import { getErrorMessageByPropertyName } from "../../utils/schema-validator";
+import PasswordRequirement from "./PasswordRequirement";
 
 const FormInput = ({
   name,
@@ -15,12 +16,14 @@ const FormInput = ({
   id,
   icon,
   label,
+  isSignup,
 }: IInput) => {
   const {
     control,
     formState: { errors },
   } = useFormContext();
   const [isPassword, setIsPassword] = useState(true);
+  const [passwordValue, setPasswordValue] = useState("");
   const errorMessage = getErrorMessageByPropertyName(errors, name);
   return (
     <>
@@ -29,36 +32,42 @@ const FormInput = ({
         name={name}
         render={({ field }) =>
           type === "password" ? (
-            <div
-              className={`border rounded-2xl h-14 flex items-center justify-start px-2 ${
-                errorMessage ? "border-error shadow" : "border-secondary-50"
-              }`}
-            >
-              <Lock />
-              <input
-                className="w-full p-2 outline-none focus:outline-none text-secondary-100"
-                type={!isPassword ? "password" : "text"}
-                placeholder={placeholder}
-                disabled={disabled}
-                {...field}
-                value={value ? value : field.value}
-              />
-              {isPassword ? (
-                <span
-                  className="cursor-pointer hover:bg-secondary-50 p-1 rounded-md"
-                  onClick={() => setIsPassword(false)}
-                >
-                  <EyeOpen />
-                </span>
-              ) : (
-                <span
-                  className="cursor-pointer hover:bg-secondary-50 p-1 rounded-md"
-                  onClick={() => setIsPassword(true)}
-                >
-                  <EyeClose />
-                </span>
-              )}
-            </div>
+            <Fragment>
+              <div
+                className={`border rounded-2xl h-14 flex items-center justify-start px-2 ${
+                  errorMessage ? "border-error shadow" : "border-secondary-50"
+                }`}
+              >
+                <Lock />
+                <input
+                  className="w-full p-2 outline-none focus:outline-none text-secondary-100"
+                  type={!isPassword ? "password" : "text"}
+                  placeholder={placeholder}
+                  disabled={disabled}
+                  {...field}
+                  value={value ? value : field.value}
+                  onChange={(e) => {
+                    field.onChange(e);
+                    setPasswordValue(e.target.value);
+                  }}
+                />
+                {isPassword ? (
+                  <span
+                    className="cursor-pointer hover:bg-secondary-50 p-1 rounded-md"
+                    onClick={() => setIsPassword(false)}
+                  >
+                    <EyeOpen />
+                  </span>
+                ) : (
+                  <span
+                    className="cursor-pointer hover:bg-secondary-50 p-1 rounded-md"
+                    onClick={() => setIsPassword(true)}
+                  >
+                    <EyeClose />
+                  </span>
+                )}
+              </div>
+            </Fragment>
           ) : type === "checkbox" ? (
             <div className="flex items-center mb-4">
               <input
@@ -96,6 +105,9 @@ const FormInput = ({
       <small className="text-left text-error mb-4 mt-2 block text-sm font-semibold">
         {errorMessage}
       </small>
+      {type === "password" && isSignup && (
+        <PasswordRequirement passwordValue={passwordValue} />
+      )}
     </>
   );
 };

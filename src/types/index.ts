@@ -34,6 +34,7 @@ export interface IInput {
   validation?: object;
   label?: string;
   required?: boolean;
+  isSignup?: boolean;
   icon?: ReactNode | ReactElement;
 }
 

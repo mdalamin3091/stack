@@ -66,26 +66,15 @@ const Signup = () => {
               placeholder="Create Password"
               name="password"
               disabled={isLoading}
+              isSignup={true}
             />
-            <div className="flex items-center justify-between gap-3 mb-7">
-              <div className="bg-[#38CB89] rounded-lg h-1 w-full"></div>
-              <div className="bg-secondary-100 rounded-lg h-1 w-full"></div>
-              <div className="bg-secondary-200 rounded-lg h-1 w-full"></div>
-              <div className="bg-secondary-200 rounded-lg h-1 w-full"></div>
-              <div className="bg-secondary-200 rounded-lg h-1 w-full"></div>
-              <div className="bg-secondary-200 rounded-lg h-1 w-full"></div>
-            </div>
             <FormInput
               type="checkbox"
               label="I agree to the Terms & Conditions"
               name="termsAndCondition"
               id="termsAndCondition"
             />
-            <button
-              className="bg-primary text-white px-4 rounded-2xl hover:bg-blue-600 disabled:bg-blue-300 w-full h-14 mb-5"
-              type="submit"
-              disabled={isLoading}
-            >
+            <button className="btn-primary" type="submit" disabled={isLoading}>
               Sign Up
             </button>
             <p className="text-base text-secondary-200 ">

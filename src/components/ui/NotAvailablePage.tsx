@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { Link } from "react-router-dom";
 
 interface PropsType {
   title: string;
@@ -14,9 +15,9 @@ const NotAvailablePage: FC<PropsType> = ({ title }) => {
         Sorry, the page you are looking for is not available at the moment.
         Please try again later.
       </p>
-      <a href="/" className="text-blue-500 hover:underline">
+      <Link to="/" className="text-blue-500 hover:underline">
         Go back to the homepage
-      </a>
+      </Link>
     </div>
   );
 };

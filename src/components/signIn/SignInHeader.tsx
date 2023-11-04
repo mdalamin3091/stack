@@ -21,7 +21,7 @@ const SignInHeader = () => {
         </button>
         <button
           className="flex items-center justify-center gap-3 h-14 bg-secondary hover:bg-secondary-50  duration-100 rounded-2xl text-secondary-200 font-semibold w-full"
-          onClick={() => toast.error("Apple signup is not available!!")}
+          onClick={() => toast.error("Apple sign in is not available!!")}
         >
           <Apple /> Sign In with Apple ID
         </button>
