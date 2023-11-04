@@ -1,27 +1,25 @@
-# React + TypeScript + Vite
+# Starting with Stack
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[Bookshop](https://stack-block.netlify.app/)
+(https://i.ibb.co/G0nMFWh/Stack.png)
 
-Currently, two official plugins are available:
+### Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+In this project, I aim to create a simple website with a focus on performance, maintainability, and a sleek user interface. To achieve this, I will leverage the Tailwind CSS library for our front-end design. All our API calls will be implemented using Redux Toolkit Query (RTK Query) and manage the whole website state using the Redux toolkit.
 
-## Expanding the ESLint configuration
+### Key Objectives:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+1. Sign-in & Signup page: I will design an engaging and user-friendly sign-in and Signup page using Tailwind CSS.
 
-- Configure the top-level `parserOptions` property like this:
+2. Dashboard: The Dashboard will provide information about the user. I'll leverage Tailwind CSS for components like user table, sidebar, navbar, and interactive elements.
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+3. API Integration: All data retrieval and management will be handled through RTK Query, ensuring efficient API calls and a smooth user experience. This includes fetching Users and sign-in and signup API.
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+4. Folder Structure: I'll maintain a well-structured project folder hierarchy to keep our codebase organized and easily maintainable. Components, Redux slices, styles, and utility functions will be neatly organized.
+
+### Technology Stack:
+
+- Language: Typescript
+- Frontend library: React
+- Styling: Tailwind Css
+- State Management: Redux Toolkit with RTK Query
